@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataources>
+    <datasource id="dataSource4Write" class="com.alibaba.druid.pool.DruidDataSource" default="true">
+        <property name="weight" value="10"/>
+        <property name="mode" value="w"/>
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/mylab?useUnicode=true&amp;characterEncoding=utf-8"/>
+        <property name="username" value="root"/>
+        <property name="password" value="123456"/>
+    </datasource>
+    <datasource id="dataSource4Read" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="weight" value="5"/>
+        <property name="mode" value="r"/>
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/mylab?useUnicode=true&amp;characterEncoding=utf-8"/>
+        <property name="username" value="root"/>
+        <property name="password" value="123456"/>
+    </datasource>
+</dataources>

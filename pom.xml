@@ -1,0 +1,132 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.core</groupId>
+  <artifactId>work</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+
+  <name>work</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+		<druid.version>1.0.20</druid.version>
+		<mainland.util.version>3.4</mainland.util.version>
+		<quartz.version>2.2.2</quartz.version>
+		<dexcoder.version>2.3.5</dexcoder.version>
+	</properties>
+	<dependencies>
+        <dependency>  
+            <groupId>org.springframework</groupId>  
+            <artifactId>spring-context-support</artifactId>  
+            <version>4.3.6.RELEASE</version>  
+        </dependency>  
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- mainland工具包 -->
+		<dependency>
+			<groupId>com.efun</groupId>
+			<artifactId>mainland-util</artifactId>
+			<version>${mainland.util.version}</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- mysql包 -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.36</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- druid数据库连接池 -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>${druid.version}</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-pool</groupId>
+			<artifactId>commons-pool</artifactId>
+			<version>1.6</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- Quartz framework -->
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+			<version>${quartz.version}</version>
+		</dependency>
+		
+		<dependency>
+		 	<groupId>com.dexcoder</groupId>
+    		<artifactId>dexcoder-dal-spring</artifactId>
+    		<version>${dexcoder.version}</version>
+		</dependency>
+	</dependencies>
+	
+	
+	
+	
+	<repositories>
+		<repository>
+			<id>nexus-public</id>
+			<name>nexus</name>
+			<url>http://172.16.5.117:8081/nexus/content/groups/public/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>nexus-public</id>
+			<name>nexus</name>
+			<url>http://172.16.5.117:8081/nexus/content/groups/public/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<distributionManagement>
+		<!--需要在maven的setting文件配置以下内容，即可直接上传到maven私服库 -->
+		<!--<server> -->
+		<!--<id>nexus-releases</id> -->
+		<!--<username>admin</username> -->
+		<!--<password>admin123</password> -->
+		<!--</server> -->
+		<repository>
+			<id>nexus-releases</id>
+			<name>releases</name>
+			<url>http://172.16.5.117:8081/nexus/content/repositories/releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus-snapshot</id>
+			<name>snapshot</name>
+			<url>http://172.16.5.117:8081/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+	<build>
+		<finalName>work</finalName>
+	</build>
+</project>
