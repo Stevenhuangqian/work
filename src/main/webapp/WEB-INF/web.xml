@@ -11,11 +11,11 @@
 		<param-value>classpath:spring-*.xml</param-value>
 	</context-param>
 	
-	<servlet>
+	<!-- <servlet>
 		<servlet-name>RedisPoolManager</servlet-name>
 		<servlet-class>com.efun.mainland.util.redis.RedisPoolManager</servlet-class>
 		<load-on-startup>1</load-on-startup>
-	</servlet>
+	</servlet> -->
 	
 	<filter>
 		<filter-name>characterEncoding</filter-name>

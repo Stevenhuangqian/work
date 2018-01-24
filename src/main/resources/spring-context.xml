@@ -1,17 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
+	<!-- xmlns:xsi  xml需要遵循的语法限制，w3统一规范 -->
+	<!-- xmlns:aop 下面这行是AOP的语义定义，整个xml关于aop的配置解析都是需要读取这个解析 -->
+	<!-- xsi:schemaLocation 下的每个文件均可以通过浏览器访问，全部都是xml的所有标签的定义，定义包括标签名，属性定义，属性类型定义，注释说明等等 -->
+
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
         http://www.springframework.org/schema/beans/spring-beans.xsd 
         http://www.springframework.org/schema/util 
         http://www.springframework.org/schema/util/spring-util.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop            
+        http://www.springframework.org/schema/aop/spring-aop-3.1.xsd  
         "
-        xmlns:util="http://www.springframework.org/schema/util"
-        xmlns:p="http://www.springframework.org/schema/p"
-        xmlns:context="http://www.springframework.org/schema/context"    
-        >
-    <context:component-scan base-package="com.core.work"/>
-    
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context">
+	
+	<!-- 在xml配置了这个标签后，spring可以自动去扫描base-pack下面或者子包下面的java文件，如果扫描到有@Component @Controller@Service等这些注解的类，则把这些类注册为bean
+		另外还提供了两个子标签 <context:include-filter>和<context:exclude-filter>
+		默认包含了<context:annotation-config />的作用(这个标签是用来处理@autowired之类的属性直接，构造器注解等)
+	  -->
+	<!-- 配置扫描注解,不扫描@Controller注解 -->
+	<context:component-scan base-package="com.core.work">
+	    <context:exclude-filter type="annotation"
+	        expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+	
+	<!-- 这个配置很重要，声明是开启@AspectJ风格自动代理，由于使用的orm框架里面，DynamicDsInterceptor这个类使用的是此方式的aop注解实现。所以必须加入这个标签
+		proxy-target-class是这个标签的一个属性，用来指定是使用哪种代理方式，默认jdk动态代理，true则是cglib
+	 -->
+	<aop:aspectj-autoproxy/>
+	
+	
+	
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+
+	<bean id="jdbcDao" class="com.dexcoder.dal.spring.JdbcDaoImpl">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
+
+	<bean id="dynamicDataSource" class="com.dexcoder.dal.spring.datasource.DynamicDataSource">
+		<property name="dsConfigFile" value="dynamic-ds.xml" />
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dynamicDataSource" />
+	</bean>
+
+	<bean id="dynamicDsInterceptor" class="com.dexcoder.dal.spring.datasource.DynamicDsInterceptor"></bean>
+
 </beans>           

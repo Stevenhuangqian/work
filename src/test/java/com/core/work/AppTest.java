@@ -1,5 +1,7 @@
 package com.core.work;
 
+import com.dexcoder.dal.spring.datasource.DataSourceContext;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -10,6 +12,9 @@ import junit.framework.TestSuite;
 public class AppTest 
     extends TestCase
 {
+	
+    private static final ThreadLocal<DataSourceContext> DATASOURCE_LOCAL = new ThreadLocal<DataSourceContext>();
+
     /**
      * Create the test case
      *
@@ -35,4 +40,8 @@ public class AppTest
     {
         assertTrue( true );
     }
+    
+    public static void main(String[] args) {
+    	System.out.println(DATASOURCE_LOCAL.get());
+	}
 }

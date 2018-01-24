@@ -4,18 +4,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.alibaba.fastjson.JSONObject;
 import com.core.work.model.User;
-import com.core.work.service.UserService;
-import com.efun.mainland.util.redis.RedisUtil;
+import com.core.work.service.*;
 
 @RestController
 public class UserController extends BaseController {
 	
 	@Autowired
-	UserService userServ;
+	IUserService userServ;
 	
 
+	/**
+	 * 推荐使用实体封装的方法，前端传递的参数最好是用数据实体模型的方式提前定义，这样还可以做数据模型的注解
+	 * @param user
+	 * @return
+	 */
 	@RequestMapping("/register")
 	public String register(User user) {
 		if(userServ.accountExist(user.getUsername())){
@@ -27,4 +30,6 @@ public class UserController extends BaseController {
 		return "register success ,id = "+id;
 	}
 
+	
+	
 }
