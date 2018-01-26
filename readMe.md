@@ -1,7 +1,8 @@
-##使用说明
-###基本设计思路说明
-接口请求规范：
-头部必须包含信息:
+#基本设计思路说明
+
+
+###接口请求规范：
+####头部必须包含信息:
 sessionToken:单次会话的id,用来做链路追踪
 RequestId:单次请求的id，用来做请求跟踪
 lang:语言标识
@@ -21,10 +22,10 @@ json数据封装在responseEntity中
 
 总共分成四层架构
 interceptor：针对权限、入参进行拦截
-controller:参数入口
-manager;
-service:
-dao:
+controller:参数入口，基本的参数校验可以放在interceptor，这里主要做核心业务的参数校验
+manager;业务主要覆盖，service服务的组合、外部接口的调用、业务逻辑的编写都在这层
+service:主要数据服务提供层，尽量确保所有服务方法都是原子(不可分解的)
+dao:这一层尽量只使用基类模板basedao，除非有特殊复杂的sql，否则不考虑编写代码。保证简洁
 context；threadlocal<map>构造，存放一些线程共享的变量，特别是requestheader头部的变量，会经过interceptor提取，提取后保存到这里
 
 
