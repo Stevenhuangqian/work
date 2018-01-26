@@ -16,9 +16,7 @@ public class UserService extends BaseService implements IUserService {
 	/* (non-Javadoc)
 	 * @see com.core.work.service.impl.IUserService#accountExist(java.lang.String)
 	 */
-	@Override
 	@Cacheable(key=RedisKey.USER_EXISTS+"_#username")
-	
 	public Boolean accountExist(String username){
 		User queryCondition = new User();
 		queryCondition.setUsername(username);
@@ -33,7 +31,6 @@ public class UserService extends BaseService implements IUserService {
 	/* (non-Javadoc)
 	 * @see com.core.work.service.impl.IUserService#addUser(com.core.work.model.User)
 	 */
-	@Override
 	public Long addUser(User user){
 		return dao.insert(user);
 	}
