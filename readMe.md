@@ -1,8 +1,6 @@
-基本设计思路说明
------------------
-##接口请求规范：
-
-####头部必须包含信息:
+#基本设计思路说明  
+##接口请求规范：  
+###头部必须包含信息: 
 *sessionToken:单次会话的id,用来做链路追踪  
 *RequestId:单次请求的id，用来做请求跟踪  
 *lang:语言标识   
@@ -13,14 +11,15 @@
 *userid：用户id号，guest登录用guest(方便后续扩容的时候做分流)  
 
 
-返回值：
-返回包括两种：页面(freemarker)  
-json数据  
-json数据封装在responseEntity中  
+  
+###返回值：
+返回包括两种：  
+页面(freemarker)  
+json数据:json数据封装在responseEntity中  
 
 
 
-总共分成四层架构
+##总共分成四层架构
 interceptor：针对权限、入参进行拦截  
 controller:参数入口，基本的参数校验可以放在interceptor，这里主要做核心业务的参数校验  
 manager;业务主要覆盖，service服务的组合、外部接口的调用、业务逻辑的编写都在这层  
@@ -34,11 +33,13 @@ context；threadlocal<map>构造，存放一些线程共享的变量，特别是
 
 
 
-###基础框架说明  
+
+
+##基础框架说明  
 本框架基于几个大模块，springmvc , mainutil, dexcoder的orm框架(基于springjdbc的封装)  
-####mainutil包  
+###mainutil包  
 <https://github.com/Stevenhuangqian/mainutil/>  
-####dexcoder  
+###dexcoder  
 <https://gitee.com/selfly/dexcoder-assistants/>  
 ###缓存注解的介绍  
 缓存注解基于两个部分@Cacheable和@CacheEvict两个，一个是增加缓存一个是清除缓存  
