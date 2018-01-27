@@ -1,6 +1,4 @@
 #基本设计思路说明
-
-
 ###接口请求规范：
 ####头部必须包含信息:
 sessionToken:单次会话的id,用来做链路追踪  
@@ -34,12 +32,12 @@ context；threadlocal<map>构造，存放一些线程共享的变量，特别是
 
 
 
-###基础框架说明
-本框架基于几个大模块，springmvc , mainutil, dexcoder的orm框架(基于springjdbc的封装)
-####mainutil包
-https://github.com/Stevenhuangqian/mainutil
-####dexcoder
-https://gitee.com/selfly/dexcoder-assistants
-###缓存注解的介绍
-缓存注解基于两个部分@Cacheable和@CacheEvict两个，一个是增加缓存一个是清除缓存
-鉴于目前框架设计，限定这两个缓存只能在service层使用。
+###基础框架说明  
+本框架基于几个大模块，springmvc , mainutil, dexcoder的orm框架(基于springjdbc的封装)  
+####mainutil包  
+https://github.com/Stevenhuangqian/mainutil  
+####dexcoder  
+https://gitee.com/selfly/dexcoder-assistants  
+###缓存注解的介绍  
+缓存注解基于两个部分@Cacheable和@CacheEvict两个，一个是增加缓存一个是清除缓存  
+鉴于目前框架设计，限定这两个缓存只能在service层使用。  
