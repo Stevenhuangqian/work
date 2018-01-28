@@ -1,4 +1,4 @@
-package com.core.work.cache;
+package com.core.work.annotation.cache;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -2,7 +2,7 @@ package com.core.work.service;
 
 import org.springframework.stereotype.Service;
 
-import com.core.work.cache.Cacheable;
+import com.core.work.annotation.cache.Cacheable;
 import com.core.work.constants.RedisKey;
 import com.core.work.model.User;
 import com.core.work.service.impl.BaseService;

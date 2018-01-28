@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.core.work.annotation.login.LoginRequired;
 import com.core.work.model.User;
 import com.core.work.service.*;
 
@@ -19,6 +20,7 @@ public class UserController extends BaseController {
 	 * @param user
 	 * @return
 	 */
+	@LoginRequired
 	@RequestMapping("/register")
 	public String register(User user) {
 		if(userServ.accountExist(user.getUsername())){

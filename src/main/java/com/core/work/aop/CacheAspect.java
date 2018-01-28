@@ -11,8 +11,6 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 
-import com.dexcoder.commons.utils.StrUtils;
-import com.dexcoder.dal.spring.datasource.DynamicDataSourceHolder;
 
 /**
  * 这里针对@cacheable跟@cacheEvict注解处理 根据定义的key进行缓存插入或者删除，不做缓存的更新操作
@@ -24,7 +22,7 @@ import com.dexcoder.dal.spring.datasource.DynamicDataSourceHolder;
 @Component
 public class CacheAspect {
 
-	@Pointcut("@annotation(com.core.work.cache.Cacheable)")
+	@Pointcut("@annotation(com.core.work.annotation.cache.Cacheable)")
 	public void executeMethod() {
 		throw new UnsupportedOperationException("不支持的方法");
 	}
