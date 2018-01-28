@@ -55,7 +55,7 @@
 		<!-- 定义需要特殊处理的异常，这是重要点 -->
 		<property name="exceptionMappings">
 			<props>
-				<prop key="ssm.exception.CustomException">/WEB-INF/jsp/custom_error.jsp</prop>
+				<prop key="com.core.work.exception.BaseCustomException">/WEB-INF/jsp/custom_error.jsp</prop>
 			</props>
 			<!-- 还可以定义其他的自定义异常 -->
 		</property>
