@@ -23,6 +23,7 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
+			<bean class="com.core.work.interceptor.ContextConvertInterceptor" />
 			<bean class="com.core.work.interceptor.LoginInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
