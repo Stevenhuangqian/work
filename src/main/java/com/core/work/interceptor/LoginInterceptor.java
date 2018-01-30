@@ -23,6 +23,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         if (handler instanceof HandlerMethod) {
+            System.out.println(321);
             LoginRequired loginRequired = findAnnotation((HandlerMethod) handler, LoginRequired.class);
             //没有声明需要权限,或者声明不验证权限
             if(loginRequired==null){

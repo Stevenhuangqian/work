@@ -6,17 +6,19 @@ package com.core.work.context;
  */
 public class ContextProvider {
 
-    private ThreadLocal<RequestContext> contextContainer = new ThreadLocal<RequestContext>();
+    private final static ThreadLocal<RequestContext> contextContainer = new ThreadLocal<RequestContext>();
 
-    public ThreadLocal<RequestContext> getContextContainer() {
+
+
+    public static ThreadLocal<RequestContext> getContextContainer() {
         return contextContainer;
     }
 
-    public void setContextContainer(ThreadLocal<RequestContext> contextContainer) {
-        this.contextContainer = contextContainer;
+    public static void setContextContainer(ThreadLocal<RequestContext> contextContainer) {
+        contextContainer = contextContainer;
     }
 
-    public RequestContext getContext(){
+    public static RequestContext getContext(){
         return contextContainer.get();
     }
 

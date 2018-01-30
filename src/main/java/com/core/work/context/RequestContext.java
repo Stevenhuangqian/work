@@ -12,7 +12,21 @@ public class RequestContext {
 	private String requestTimesstamp;
 	private String source;
 	private String userid;
+	private String ip;
 	private Map<String,Object> datas;
+
+
+	public RequestContext() {
+	}
+
+
+	public String getIp() {
+		return ip;
+	}
+
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
 
 	public String getSessionToken() {
 		return sessionToken;
