@@ -4,19 +4,16 @@
 	<!-- xsi:schemaLocation 下的每个文件均可以通过浏览器访问，全部都是xml的所有标签的定义，定义包括标签名，属性定义，属性类型定义，注释说明等等 -->
 
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:aop="http://www.springframework.org/schema/aop"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans  
-        http://www.springframework.org/schema/beans/spring-beans.xsd 
-        http://www.springframework.org/schema/util 
-        http://www.springframework.org/schema/util/spring-util.xsd
-        http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd
-        http://www.springframework.org/schema/aop            
-        http://www.springframework.org/schema/aop/spring-aop-3.1.xsd  
-        "
-	xmlns:util="http://www.springframework.org/schema/util" xmlns:p="http://www.springframework.org/schema/p"
-	xmlns:context="http://www.springframework.org/schema/context">
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans.xsd
+			http://www.springframework.org/schema/context
+			http://www.springframework.org/schema/context/spring-context.xsd
+			http://www.springframework.org/schema/aop
+			http://www.springframework.org/schema/aop/spring-aop-3.1.xsd"
+		>
 	
 	<!-- 在xml配置了这个标签后，spring可以自动去扫描base-pack下面或者子包下面的java文件，如果扫描到有@Component @Controller@Service等这些注解的类，则把这些类注册为bean
 		另外还提供了两个子标签 <context:include-filter>和<context:exclude-filter>
@@ -55,5 +52,9 @@
 	</bean>
 
 	<bean id="dynamicDsInterceptor" class="com.dexcoder.dal.spring.datasource.DynamicDsInterceptor"></bean>
+
+
+
+
 
 </beans>           

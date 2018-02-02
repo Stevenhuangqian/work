@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 分文件管理spring配置的时候，头部声明这四行是必须的 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd"
+>
+
+
+    <bean id="user"
+          class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="userJob"/>
+        <property name="targetMethod" value="userUpdate"/>
+        <property name="concurrent" value="false"/>
+    </bean>
+
+    <bean id="userTrigger"
+          class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="user"/>
+        <property name="startDelay" value="0"/>
+        <property name="cronExpression" value="0 0 0 ? * *" />
+    </bean>
+
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="jobDetails">
+            <list>
+                <ref bean="user"/>
+            </list>
+        </property>
+
+        <property name="triggers">
+            <list>
+                <ref bean="userTrigger"/>
+            </list>
+        </property>
+    </bean>
+
+
+</beans>

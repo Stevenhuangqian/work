@@ -1,11 +1,21 @@
 package com.core.work.context;
 
-import java.util.*;
+import com.core.work.annotation.reg.EmptyReg;
+import com.core.work.annotation.reg.MaxSize;
+import com.core.work.annotation.reg.MinSize;
+
+import java.util.Map;
 
 public class RequestContext {
 
+
+	@MaxSize(max=5)
+	@MinSize(min=2)
 	private String sessionToken;
+	@EmptyReg
 	private String requestId;
+
+	@MaxSize(max=1)
 	private String lang;
 	private String region;
 	private String timeZone;
